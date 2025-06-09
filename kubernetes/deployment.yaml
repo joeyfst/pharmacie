@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pharmacie-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pharmacie
+  template:
+    metadata:
+      labels:
+        app: pharmacie
+    spec:
+      containers:
+      - image: registry.gitlab.com/joeyfst1/pharmacie:latest
+        name: pharmacie
+      imagePullSecrets:
+      - name: regcred
